@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<canvas id="canvas" width="400" height="500" style="border: 1px solid black" onmousemove="myFunction(event)" onmouseout="clearCoor()" ></canvas>
+
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+let height = canvas.height;
+let width = canvas.width;
+
+let image = new Image();
+image.src = "tank.png";
+
+
+
+
+function myFunction(e) {
+    var x = e.offsetX;
+    var y = e.offsetY;
+
+// tank
+    tank()
+    function tank() {
+    ctx.beginPath();
+    ctx.clearRect(0,0, width, height);
+    ctx.drawImage(image, x - 20, height * 2/3 , 50, 50);
+    ctx.fillRect(x - 5, width * 4/5 , 20, 20);
+    ctx.fill();
+    ctx.stroke();
+  }
+
+    // shooting
+addEventListener("onclick",shooting());
+
+function shooting() {
+  setInterval(bullet(), 10);
+
+  function bullet() {
+    if (canvas.height > 500) {
+      clearInterval(bullet());
+
+    } else {
+      ctx.beginPath();
+      ctx.clearRect(0,0, width, height);
+      tank()
+      let run = 0;
+      run += 20;
+      ctx.fillRect(x - 5, width * 4/5 - run, 20, 20);
+    }
+  }
+}
+    document.getElementById("demo").innerHTML = "coordinate: " + x + "-" + y;
+
+}
+
+
+
+function clearCoor() {
+    document.getElementById("demo").innerHTML = "";
+}
+
+
+
+</script>
+
+</body>
+</html>
