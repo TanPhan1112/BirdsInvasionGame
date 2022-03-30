@@ -138,7 +138,7 @@ function timer() {
   score = 0;
   if (count == true) {
     // set time
-    let second = 20;
+    let second = 50;
     let timer = setInterval(function() {
       second -= 1;
       document.getElementById("a").innerHTML = second + "s";
