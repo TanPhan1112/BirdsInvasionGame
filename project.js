@@ -61,17 +61,18 @@ function drawObjects() {
         ctx.drawImage(redB, flying3x += Math.floor((Math.random() * 5)), flying3y += Math.floor((Math.random() * 20)), width + 50, height + 50);
         ctx.drawImage(redB, flying3x += 3, flying3y, width + 50, height + 50);
       }
+      // Make bird3 (blue bird) much faster than bird4 (yellow bird)
       if (bird3) {
-        ctx.drawImage(blueB, flying4x += 8, flying4y, width + 50, height + 50);
+        ctx.drawImage(blueB, flying4x += 30, flying4y, width + 50, height + 50); // Much higher speed
       } else {
-        ctx.drawImage(blueB, flying4x += Math.floor((Math.random() * 5)), flying4y += Math.floor((Math.random() * 20)), width + 50, height + 50);
-        ctx.drawImage(blueB, flying4x += 3, flying4y, width + 50, height + 50);
+        ctx.drawImage(blueB, flying4x += Math.floor((Math.random() * 20)), flying4y += Math.floor((Math.random() * 35)), width + 50, height + 50); // Much higher random speed
+        ctx.drawImage(blueB, flying4x += 24, flying4y, width + 50, height + 50); // Much higher speed
       }
       if (bird4) {
-        ctx.drawImage(yellowB, flying5x += 9, flying5y, width + 50, height + 50);
+        ctx.drawImage(yellowB, flying5x += 12, flying5y, width + 50, height + 50); // Slower than blue bird
       } else {
-        ctx.drawImage(yellowB, flying5x += Math.floor((Math.random() * 5)), flying5y += Math.floor((Math.random() * 20)), width + 50, height + 50);
-        ctx.drawImage(yellowB, flying5x += 3, flying5y, width + 50, height + 50);
+        ctx.drawImage(yellowB, flying5x += Math.floor((Math.random() * 8)), flying5y += Math.floor((Math.random() * 20)), width + 50, height + 50);
+        ctx.drawImage(yellowB, flying5x += 6, flying5y, width + 50, height + 50);
       }
 
       if (flying1x >= canvas.width || flying1y >= canvas.height) {
@@ -138,8 +139,8 @@ function timer() {
   score = 0;
   if (count == true) {
     // set time
-    let second = 50;
-    let timer = setInterval(function() {
+    let second = 30;
+    let timer = setInterval(function () {
       second -= 1;
       document.getElementById("a").innerHTML = second + "s";
       if (second == 0) {
